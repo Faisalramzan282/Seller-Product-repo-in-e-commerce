@@ -1,42 +1,41 @@
 <template>
-  <div class="hello">
-    <!-- <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router" target="_blank" rel="noopener">router</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-vuex" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul> -->
+  <!-- class="text-white p-4 bg-slate-600 mr-2 rounded" -->
+  <div>
+     <div class="bg-gray-300 py-8">
+      <p class="font-black text-2xl">Products Seller Pannel</p>
+     </div>
+    <div class="flex flex-col mt-32  gap-10  items-center">
+      <router-link class="cutom-width w-30 border border-gray-400 py-4 mx-auto text-xl font-medium rounded bg-e2ead7"  to="/signUp">
+      <font-awesome-icon id="bounce"  :icon="faUser" :class="['fa-lg', 'bounce']" />
+     SignUp
+    </router-link> 
+     <router-link 
+     class="w-30 cutom-width border border-gray-400 py-4 mx-auto text-xl font-medium rounded bg-e2ead7"
+      to="/login">
+      <span><font-awesome-icon icon="right-to-bracket" :class="['fa-lg', 'fa-beat', 'bounce']" /></span>
+     Login
+     </router-link>
+    </div>
   </div>
 </template>
 
 <script>
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons';  // for signUp icon
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faRightToBracket } from '@fortawesome/free-solid-svg-icons'  //for login icon
+
+library.add(faRightToBracket);
 export default {
+  
   name: 'HelloWorld',
-  props: {
-    msg: String
+  components:{
+    FontAwesomeIcon
+  },
+  data() {
+    return {
+      faUser
+    }
   }
 }
 </script>
@@ -54,7 +53,24 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
-a {
-  color: #42b983;
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
 }
+#bounce{
+  animation: bounce 2s infinite;
+}
+.cutom-width{
+  @media (max-width: 599px) {
+    width: 80%;
+  }
+}
+
 </style>

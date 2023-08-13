@@ -84,9 +84,7 @@ export default createStore({
     getCartsCount(state){
      return state.cartsCount;
     }, 
-    getTotalPrice(state){
-      return state.addToCarts.reduce((total, state.addToCarts.price) => total + state.addToCarts.price, 0);
-    }
+   
   },
 })
 

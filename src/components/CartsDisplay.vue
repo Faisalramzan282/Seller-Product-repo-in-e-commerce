@@ -1,14 +1,15 @@
 <template>
     <div>
        <div class="flex justify-end m-2">
-        <h2 class="m-4">Total Favourite Carts: {{ carts.length }}</h2>
+        <h2 class="m-4">Favourite Products: {{ carts.length }}</h2>
         <p class="border border-2 inline-block max-w-[100%] cursor-pointer px-4 bg-stone-200 py-4 rounded-lg" @click="carts.length=0">Remove All</p>
 
        </div>
-    <ul>
+     
+        <ul>
         <li v-for="(task,idx) in carts" :key =idx>
             <div
-            class="w-1/2 border border-2 border-solid divide-y divide-slate-200 mt-8 mb-8 mx-auto specific-width-cont"
+            class="md:w-1/2 border border-2 border-solid divide-y divide-slate-200 mt-8 mb-8 mx-auto specific-width"
           >
             <p class="text-start p-4"><b>Title:</b> {{ task.title }}</p>
             <p class="text-start p-4"><b>Description:</b> {{ task.desc }}</p>
@@ -40,7 +41,8 @@
             
         </li>
     </ul>
-        <p>total price is : {{ totalPrice }}</p>
+    
+        <p class="bg-black px-4 py-3 mx-auto text-white w-80">Total  : $ <span class="font-bold text-3xl">{{ totalPrice}}</span></p>
     </div>
     
       
@@ -51,8 +53,20 @@ import { mapGetters, mapActions } from 'vuex';
 export default{
     name: "ShowCarts",
     computed:{
-        ...mapGetters({carts: "getCarts"}, {totalPrice: "getTotalPrice"}),
+        ...mapGetters({carts: "getCarts"}),
        
+        totalPrice(){
+          let CartShow = "No Cart";
+         let totalPRICE = this.carts.reduce((total, carts) => total + carts.price, 0);
+         if(totalPRICE !== 0)
+         {
+          return totalPRICE;
+         }
+         else{
+          return CartShow;
+         }
+         
+        }
        
       
     }, 
@@ -69,9 +83,10 @@ export default{
             this.carts.splice(idx, 1);
         },
         plusCount(task){
-            console.log(task);
+            // console.log(task);
             this.cartsCoun(task);
            
+
         },
         minusCount(idx)
         {
@@ -80,10 +95,19 @@ export default{
         
         
     }, 
-    created(){
-        
-    }
+   
 
 }
 
 </script>
+<style>
+
+  @media screen and (max-width: 640px) {
+  .specific-width{
+    width: 98%;
+  
+  }
+}
+
+
+</style>

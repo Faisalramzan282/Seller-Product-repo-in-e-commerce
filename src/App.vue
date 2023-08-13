@@ -1,9 +1,9 @@
 <template>
-  <div class="gap-2 p-10">
-    <router-link class="text-white p-4 bg-slate-600 mr-2 rounded" to="/signUp">SignUp</router-link> 
-     <router-link class="text-white p-4 bg-slate-600 rounded"   to="/login">Login</router-link>
+  <!-- <div class="gap-2 p-10"> -->
+     
+     
 
-  </div>
+  <!-- </div> -->
   
   <router-view/>
 </template>

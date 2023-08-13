@@ -1,7 +1,20 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}", ],
+  content: [
+    "./src/**/*.{html,js}", 
+    './src/**/*.vue', 
+    './src/**/*.js'
+  ],
   theme: {
-      extend: {},
+      extend: {
+        colors: {
+          e2ead7: '#e2ead7',  // used in login and signUp -bg
+        },
+        width: {
+          '30': '30%',
+           '80' : '80%'
+        },
+      },
   },
   plugins: [],
 }
