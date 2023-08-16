@@ -10,6 +10,13 @@
       type="text"
       placeholder="Enter Password"
     />
+    <div w-full p-4 mb-10 border border-gray-300>
+      <label for="role">Select Role:</label>
+    <select id="role" v-model="loginForm.selectedRole">
+     <option value="user">Be a user</option>
+    <option value="admin">Be an admin</option>
+    </select>
+    </div>
     <button
     class="w-full bg-blue-500 text-white mb-10 py-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"     @click="login">Login</button>
   </div>
@@ -18,14 +25,17 @@
 </template>
 
 <script>
+
 import { mapActions } from "vuex";
 export default {
   name: "loginComp",
   data() {
     return {
+       
       loginForm: {
         email: "",
         password: "",
+        selectedRole: ''
       },
     };
   },
@@ -36,8 +46,11 @@ export default {
         this.validateUser(this.loginForm);
         const emailVal = localStorage.getItem("userEmail");
         const passval = localStorage.getItem("userPassword");
-        if (this.loginForm.email == emailVal && this.loginForm.password == passval) {
+        if (this.loginForm.email == emailVal && this.loginForm.password == passval && this.loginForm.selectedRole === 'admin') {
           this.$router.push("/displayList");
+        }
+        if(this.loginForm.email == emailVal && this.loginForm.password == passval && this.loginForm.selectedRole === 'user') {
+          this.$router.push("/UserViewTask");
         }
       }
     },

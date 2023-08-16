@@ -29,7 +29,7 @@
                 src="../assets/icons/plus.png"
                 alt="plus"
               />
-               <!-- <h2 class="text-3xl">{{ count }}</h2> -->
+               <h2 class="text-3xl">{{ task.quantity}}</h2>
               <img
               @click="minusCount(idx, task)"
                 class="w-1/12 cursor-pointer"
@@ -42,7 +42,18 @@
         </li>
     </ul>
     
-        <p class="bg-black px-4 py-3 mx-auto text-white w-80">Total  : $ <span class="font-bold text-3xl">{{ totalPrice}}</span></p>
+        <p class="bg-black px-4 py-3 mx-auto text-white w-80 mb-4">Total  : $ <span class="font-bold text-3xl">{{ totalPrice}}</span></p>
+      <!-- <div >
+        <checkSlots>
+        <p>Hello, dear friend! Wishing you a fantastic day.</p>
+         <template #header>
+         <h1>Here might be a page title</h1>
+         </template>
+        
+        </checkSlots>
+          
+      </div> -->
+   
     </div>
     
       
@@ -51,10 +62,10 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 export default{
+    
     name: "ShowCarts",
     computed:{
         ...mapGetters({carts: "getCarts"}),
-       
         totalPrice(){
           let CartShow = "No Cart";
          let totalPRICE = this.carts.reduce((total, carts) => total + carts.price, 0);
@@ -72,8 +83,7 @@ export default{
     }, 
     data(){
         return{ 
-            count: 1,
-            
+
         }
     },
     methods:{
@@ -83,10 +93,7 @@ export default{
             this.carts.splice(idx, 1);
         },
         plusCount(task){
-            // console.log(task);
-            this.cartsCoun(task);
-           
-
+          this.cartsCoun(task);
         },
         minusCount(idx)
         {

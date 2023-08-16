@@ -122,7 +122,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions({ addToCart: "addToCart", update:'updateTask' }),
+    ...mapActions({ addToCart: "addToCart", update:'updateTask'}),
     deleteTask(idx) {
       this.getTasks.splice(idx, 1);
     },
@@ -148,6 +148,7 @@ export default {
 
     addCartBtn(task) {
       this.addToCart(task);
+      
     },
     conUpdateBtn(idx){
         this.update({id:idx, payload: this.popUpForm});

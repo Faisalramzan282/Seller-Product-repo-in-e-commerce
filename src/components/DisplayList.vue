@@ -45,6 +45,10 @@
     focus:outline-none  text-left"
      >Seach Products</button>
     </div>
+ 
+     
+    
+
   </div>
     
     <router-view/>
@@ -56,6 +60,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import LoginButtonDyn from './LogoutButtonDyn.vue';
 import SearchInputField from './SearchInputField.vue';
+// import createTodo from './createTodo.vue';
 library.add(faBars);
 export default {
   name: 'displayList',
@@ -69,7 +74,8 @@ export default {
   components:{
     FontAwesomeIcon,
     LoginButtonDyn,
-    SearchInputField
+    SearchInputField, 
+  
 },
   created() {
     window.addEventListener('resize', this.updateDimensions);
